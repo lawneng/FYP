@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/FYP/static/css/main.073c9b0a.css",
+    "main.js": "/FYP/static/js/main.bd045c3b.js",
+    "static/js/787.28cb0dcd.chunk.js": "/FYP/static/js/787.28cb0dcd.chunk.js",
+    "static/media/smiling.png": "/FYP/static/media/smiling.ddace8bde89c6a7e4d2d.png",
+    "static/media/AniFace-logos_black.png": "/FYP/static/media/AniFace-logos_black.1ac35dbfc818f8204969.png",
+    "index.html": "/FYP/index.html",
+    "main.073c9b0a.css.map": "/FYP/static/css/main.073c9b0a.css.map",
+    "main.bd045c3b.js.map": "/FYP/static/js/main.bd045c3b.js.map",
+    "787.28cb0dcd.chunk.js.map": "/FYP/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.bd045c3b.js"
+  ]
+}
