@@ -1,8 +1,34 @@
+import React, { useState } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import AniFaceLogo from './AniFace-logos_black.png';
-import backgroundImage from './smiling.png';
 import { TextInput } from '@mantine/core';
+import { Link  } from 'react-router-dom';
 
 function UserLandingPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const redirectToUserHome = () => {
+    window.location.href = '/UserHome'; // Redirect after a delay
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const auth = getAuth();
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      // Handle successful login
+      setLoggedIn(true); // Set login status to true
+      setError('');
+    } catch (error) {
+      setError(error.message);
+    }
+  }
+
     const containerStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -42,16 +68,30 @@ function UserLandingPage() {
           <img src={AniFaceLogo} alt="Your Logo" style={logoStyle} />
           <div style={formContainerStyle}>
             <TextInput style={inputStyle}
-            placeholder="Username"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             />
             <TextInput style={inputStyle}
             placeholder="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             />
-            <a href="/UserHome">
-                <button style={buttonStyle}>Log In</button>
-            </a>
+            {loggedIn ? (
+            <div>
+              <p>You are logged in. Redirecting to UserHome...</p>
+              {redirectToUserHome()}
+            </div>
+          ) : (
+            <div>
+              <button style={buttonStyle} onClick={handleLogin}>Log In</button>
+              <p>Don't have an account? <Link to="/UserSignupPage">Sign up</Link></p>
+            </div>
+          )}
+              {error && <p>{error}</p>}
           </div>
-        </div>
+        </div> 
             );
 }
 

@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { rem, Divider, ColorSchemeProvider, ActionIcon, useMantineColorScheme } from '@mantine/core';
+import { useTheme } from '../../GloabalThemeProvider';
+import { rem, useMantineColorScheme } from '@mantine/core';
 import UserNavBar from "../General/UserNavBar";
 import { TextInput, MantineProvider, Button, Group, Text, Collapse, Box, Switch } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
 
 function UserSettingPage() {
+
+    // const [isDarkMode, setIsDarkMode] = useState(false);
+
+    // const colorScheme = useMantineColorScheme();
+  
+    // const toggleDarkMode = () => {
+    //   setIsDarkMode((prevMode) => !prevMode);
+    // };
+    const { isDarkMode, toggleDarkMode } = useTheme(); 
 
     const titleStyle = {
         marginTop: rem(-75),
@@ -37,16 +47,16 @@ function UserSettingPage() {
 
     const [opened, { toggle }] = useDisclosure(false);
 
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    // const [isDarkMode, setIsDarkMode] = useState(false);
 
-    useEffect(() => {
-        // Update the theme or scheme when isDarkMode changes
-        document.body.className = isDarkMode ? 'dark-theme' : '';
-      }, [isDarkMode]);
+    // useEffect(() => {
+    //     // Update the theme or scheme when isDarkMode changes
+    //     document.body.className = isDarkMode ? 'dark-theme' : '';
+    //   }, [isDarkMode]);
 
-    const toggleDarkMode = () => {
-    setIsDarkMode((prevMode) => !prevMode);
-    };
+    // const toggleDarkMode = () => {
+    // setIsDarkMode((prevMode) => !prevMode);
+    // };
 
     return (
         <MantineProvider theme={{ colorScheme: isDarkMode ? 'dark' : 'light' }} withGlobalStyles withNormalizeCSS>
